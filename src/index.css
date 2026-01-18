@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Custom Transeity Font */
+@font-face {
+  font-family: 'Transeity';
+  src: url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&display=swap') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.couple-name {
+  font-family: 'Transeity', 'Playfair Display', serif !important;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', 'Helvetica', 'Arial', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+
