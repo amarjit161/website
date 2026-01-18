@@ -14,7 +14,7 @@ export default function GalleryPage() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.9 },
     },
   };
 
@@ -83,22 +83,23 @@ export default function GalleryPage() {
           </Box>
 
           {/* Cloudinary Wedding Video Section */}
-          <Card
-            component={motion.div}
+          <motion.div
             variants={fadeLift}
             initial="hidden"
             whileInView="visible"
             viewport={sectionViewport}
             whileHover={{ translateY: -6 }}
             transition={{ type: 'spring', stiffness: 90, damping: 14 }}
-            sx={{
-              mb: 6,
-              bgcolor: 'rgba(255, 246, 238, 0.98)',
-              borderRadius: 3,
-              boxShadow: '0 16px 48px rgba(201, 162, 77, 0.2)',
-            }}
           >
-            <CardContent sx={{ p: { xs: 3, sm: 4 }, textAlign: 'center' }}>
+            <Card
+              sx={{
+                mb: 6,
+                bgcolor: 'rgba(255, 246, 238, 0.98)',
+                borderRadius: 3,
+                boxShadow: '0 16px 48px rgba(201, 162, 77, 0.2)',
+              }}
+            >
+              <CardContent sx={{ p: { xs: 3, sm: 4 }, textAlign: 'center' }}>
               <Typography
                 variant="h4"
                 sx={{
@@ -158,26 +159,28 @@ export default function GalleryPage() {
                   />
                 </Box>
               </Box>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </motion.div>
 
           {/* Second Wedding Invite Video */}
-          <Card
-            component={motion.div}
+          <motion.div
             variants={fadeLift}
             initial="hidden"
             whileInView="visible"
             viewport={sectionViewport}
             whileHover={{ translateY: -6 }}
             transition={{ type: 'spring', stiffness: 90, damping: 14 }}
-            sx={{
-              mb: 6,
-              bgcolor: 'rgba(255, 246, 238, 0.98)',
-              borderRadius: 3,
-              boxShadow: '0 16px 48px rgba(201, 162, 77, 0.2)',
-            }}
           >
-            <CardContent sx={{ p: { xs: 3, sm: 4 }, textAlign: 'center' }}>
+            <Card
+              sx={{
+                mb: 6,
+                bgcolor: 'rgba(255, 246, 238, 0.98)',
+                borderRadius: 3,
+                boxShadow: '0 16px 48px rgba(201, 162, 77, 0.2)',
+              }}
+            >
+              <CardContent sx={{ p: { xs: 3, sm: 4 }, textAlign: 'center' }}>
               <Typography
                 variant="h4"
                 sx={{
@@ -237,8 +240,9 @@ export default function GalleryPage() {
                   />
                 </Box>
               </Box>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </motion.div>
 
           {/* Gallery Card */}
           <Card

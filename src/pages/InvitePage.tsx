@@ -9,7 +9,6 @@ import {
   Card,
   CardContent,
   Button,
-  Grid,
   Divider,
   Stack,
   Dialog,
@@ -29,8 +28,6 @@ import {
 import { weddingConfig } from '../config';
 import EventIcon from '@mui/icons-material/Event';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import DownloadIcon from '@mui/icons-material/Download';
 import CloseIcon from '@mui/icons-material/Close';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
@@ -46,7 +43,7 @@ const fadeLift = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.9 },
   },
 };
 
@@ -98,11 +95,6 @@ export default function InvitePage() {
     window.open(weddingConfig.invitationPdfUrl, '_blank');
   };
 
-  const handleDownloadPDF = () => {
-    const downloadUrl = weddingConfig.invitationPdfUrl.replace('/view', '/download');
-    window.open(downloadUrl, '_blank');
-  };
-
   return (
     <Box>
       {/* Ganesh Shloka Section */}
@@ -132,41 +124,42 @@ export default function InvitePage() {
       <Box sx={{ bgcolor: 'background.default', py: 6 }}>
         <Container maxWidth="lg">
           {/* Hero Section with Deep Plum Background */}
-          <Box
-            component={motion.div}
+          <motion.div
             variants={fadeLift}
             initial="hidden"
             whileInView="visible"
             viewport={sectionViewport}
             whileHover={{ rotateX: -2, rotateY: 2, translateY: -4 }}
             transition={{ type: 'spring', stiffness: 80, damping: 14 }}
-            sx={{
-              bgcolor: '#2f1726',
-              backgroundImage:
-                'linear-gradient(135deg, rgba(74, 26, 45, 0.95) 0%, rgba(56, 21, 48, 0.95) 45%, rgba(38, 14, 36, 0.96) 100%)',
-              borderRadius: 3,
-              p: { xs: 4, sm: 6 },
-              mb: 6,
-              textAlign: 'center',
-              position: 'relative',
-              overflow: 'hidden',
-              perspective: '1200px',
-              transformStyle: 'preserve-3d',
-              animation: `${floatHero} 14s ease-in-out infinite`,
-              willChange: 'transform',
-              boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 18px 60px rgba(32, 7, 25, 0.55)',
-              '&::before': {
-                content: '""',
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                backgroundImage: 'radial-gradient(circle at 50% 0%, rgba(201, 162, 77, 0.05) 0%, transparent 55%)',
-                pointerEvents: 'none',
-              },
-            }}
           >
+            <Box
+              sx={{
+                bgcolor: '#2f1726',
+                backgroundImage:
+                  'linear-gradient(135deg, rgba(74, 26, 45, 0.95) 0%, rgba(56, 21, 48, 0.95) 45%, rgba(38, 14, 36, 0.96) 100%)',
+                borderRadius: 3,
+                p: { xs: 4, sm: 6 },
+                mb: 6,
+                textAlign: 'center',
+                position: 'relative',
+                overflow: 'hidden',
+                perspective: '1200px',
+                transformStyle: 'preserve-3d',
+                animation: `${floatHero} 14s ease-in-out infinite`,
+                willChange: 'transform',
+                boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 18px 60px rgba(32, 7, 25, 0.55)',
+                '&::before': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  backgroundImage: 'radial-gradient(circle at 50% 0%, rgba(201, 162, 77, 0.05) 0%, transparent 55%)',
+                  pointerEvents: 'none',
+                },
+              }}
+            >
             <Typography
               variant="h1"
               sx={{
@@ -195,31 +188,28 @@ export default function InvitePage() {
             >
               Together with their families, invite you to celebrate their wedding
             </Typography>
-          </Box>
+            </Box>
+          </motion.div>
 
         {/* Countdown Timer */}
-        <Paper
-          component={motion.div}
-          variants={fadeLift}
-          initial="hidden"
-          whileInView="visible"
-          viewport={sectionViewport}
-          elevation={0}
-          sx={{
-            bgcolor: '#301828',
-            backgroundImage:
-              'linear-gradient(145deg, rgba(78, 29, 50, 0.95) 0%, rgba(54, 22, 45, 0.95) 50%, rgba(36, 13, 36, 0.97) 100%)',
-            border: '2px solid #C9A24D',
-            borderRadius: 4,
-            p: 4,
-            mb: 6,
-            textAlign: 'center',
-            position: 'relative',
-            overflow: 'hidden',
-            transformStyle: 'preserve-3d',
-            boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 18px 60px rgba(32, 7, 25, 0.5)',
-          }}
-        >
+        <motion.div variants={fadeLift} initial="hidden" whileInView="visible" viewport={sectionViewport}>
+          <Paper
+            elevation={0}
+            sx={{
+              bgcolor: '#301828',
+              backgroundImage:
+                'linear-gradient(145deg, rgba(78, 29, 50, 0.95) 0%, rgba(54, 22, 45, 0.95) 50%, rgba(36, 13, 36, 0.97) 100%)',
+              border: '2px solid #C9A24D',
+              borderRadius: 4,
+              p: 4,
+              mb: 6,
+              textAlign: 'center',
+              position: 'relative',
+              overflow: 'hidden',
+              transformStyle: 'preserve-3d',
+              boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 18px 60px rgba(32, 7, 25, 0.5)',
+            }}
+          >
           <Typography variant="h4" sx={{ mb: 3, color: '#C9A24D', position: 'relative', zIndex: 1 }}>
             ⏳ Countdown to the Big Day
           </Typography>
@@ -285,19 +275,19 @@ export default function InvitePage() {
               </Box>
             ))}
           </Box>
-        </Paper>
+          </Paper>
+        </motion.div>
 
         {/* Wedding Ceremony Card */}
-        <Card
-          component={motion.div}
+        <motion.div
           variants={fadeLift}
           initial="hidden"
           whileInView="visible"
           viewport={sectionViewport}
           whileHover={{ translateY: -6 }}
           transition={{ type: 'spring', stiffness: 90, damping: 14 }}
-          sx={{ mb: 4, overflow: 'visible' }}
         >
+          <Card sx={{ mb: 4, overflow: 'visible' }}>
           <CardContent sx={{ p: { xs: 3, sm: 4 } }}>
             <Typography
               variant="h3"
@@ -339,20 +329,20 @@ export default function InvitePage() {
               </Box>
             </Stack>
           </CardContent>
-        </Card>
+          </Card>
+        </motion.div>
 
         {/* Family Details */}
-        <Card
-          component={motion.div}
+        <motion.div
           variants={fadeLift}
           initial="hidden"
           whileInView="visible"
           viewport={sectionViewport}
           whileHover={{ translateY: -6 }}
           transition={{ type: 'spring', stiffness: 90, damping: 14 }}
-          sx={{ mb: 4 }}
         >
-          <CardContent sx={{ p: { xs: 3, sm: 4 } }}>
+          <Card sx={{ mb: 4 }}>
+            <CardContent sx={{ p: { xs: 3, sm: 4 } }}>
             <Typography
               variant="h3"
               sx={{
@@ -363,9 +353,14 @@ export default function InvitePage() {
             >
               👨‍👩‍👧‍👦 Family Details
             </Typography>
-            <Grid container spacing={4}>
-              <Grid item xs={12} sm={6}>
-                <Box sx={{ textAlign: 'center' }}>
+            <Box
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+                gap: 4,
+              }}
+            >
+              <Box sx={{ textAlign: 'center' }}>
                   <Typography
                     variant="h5"
                     sx={{
@@ -396,11 +391,9 @@ export default function InvitePage() {
                   <Typography variant="body1" sx={{ color: 'text.primary' }}>
                     {weddingConfig.groom.fatherName}
                   </Typography>
-                </Box>
-              </Grid>
+              </Box>
 
-              <Grid item xs={12} sm={6}>
-                <Box sx={{ textAlign: 'center' }}>
+              <Box sx={{ textAlign: 'center' }}>
                   <Typography
                     variant="h5"
                     sx={{
@@ -431,23 +424,22 @@ export default function InvitePage() {
                   <Typography variant="body1" sx={{ color: 'text.primary' }}>
                     {weddingConfig.bride.fatherName}
                   </Typography>
-                </Box>
-              </Grid>
-            </Grid>
+              </Box>
+            </Box>
           </CardContent>
-        </Card>
+          </Card>
+        </motion.div>
 
         {/* Events Timeline */}
-        <Card
-          component={motion.div}
+        <motion.div
           variants={fadeLift}
           initial="hidden"
           whileInView="visible"
           viewport={sectionViewport}
           whileHover={{ translateY: -6 }}
           transition={{ type: 'spring', stiffness: 90, damping: 14 }}
-          sx={{ mb: 4 }}
         >
+          <Card sx={{ mb: 4 }}>
           <CardContent sx={{ p: { xs: 3, sm: 4 } }}>
             <Typography
               variant="h3"
@@ -491,21 +483,21 @@ export default function InvitePage() {
                 </TimelineItem>
               ))}
             </Timeline>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </motion.div>
 
         {/* Reception Card */}
-        <Card
-          component={motion.div}
+        <motion.div
           variants={fadeLift}
           initial="hidden"
           whileInView="visible"
           viewport={sectionViewport}
           whileHover={{ translateY: -6 }}
           transition={{ type: 'spring', stiffness: 90, damping: 14 }}
-          sx={{ mb: 4 }}
         >
-          <CardContent sx={{ p: { xs: 3, sm: 4 } }}>
+          <Card sx={{ mb: 4 }}>
+            <CardContent sx={{ p: { xs: 3, sm: 4 } }}>
             <Typography
               variant="h3"
               sx={{
@@ -544,11 +536,11 @@ export default function InvitePage() {
                   </Typography>
                 </Box>
               </Box>
-            </Stack>
+             </Stack>
 
-            <Divider sx={{ my: 3 }} />
+             <Divider sx={{ my: 3 }} />
 
-            <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, flexWrap: 'wrap' }}>
+             <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, flexWrap: 'wrap' }}>
               <motion.div
                 whileHover={{ y: -3, scale: 1.02 }}
                 whileTap={{ scale: 0.98, y: 0 }}
@@ -570,9 +562,10 @@ export default function InvitePage() {
                   📍 View Location
                 </Button>
               </motion.div>
-            </Box>
-          </CardContent>
-        </Card>
+             </Box>
+           </CardContent>
+         </Card>
+        </motion.div>
 
         {/* Action Buttons */}
         <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap', my: 6 }}>
@@ -618,21 +611,22 @@ export default function InvitePage() {
         </Box>
 
         {/* PDF Viewer Section */}
-        <Card
-          component={motion.div}
+        <motion.div
           variants={fadeLift}
           initial="hidden"
           whileInView="visible"
           viewport={sectionViewport}
-          sx={{
-            mb: 6,
-            bgcolor: 'rgba(255, 246, 238, 0.98)',
-            borderRadius: 3,
-            boxShadow: '0 16px 48px rgba(201, 162, 77, 0.2)',
-            overflow: 'hidden',
-          }}
         >
-          <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
+          <Card
+            sx={{
+              mb: 6,
+              bgcolor: 'rgba(255, 246, 238, 0.98)',
+              borderRadius: 3,
+              boxShadow: '0 16px 48px rgba(201, 162, 77, 0.2)',
+              overflow: 'hidden',
+            }}
+          >
+            <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
             <Typography
               variant="h4"
               sx={{
@@ -668,8 +662,9 @@ export default function InvitePage() {
                 }}
               />
             </Box>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </motion.div>
 
         {/* Google Maps Dialog */}
         <Dialog
@@ -712,18 +707,27 @@ export default function InvitePage() {
 
           <DialogContent sx={{ p: 0 }}>
             <Box
-              component="iframe"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.5!2d88.25!3d22.45!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sShiv%20Shakti%20Marriage%20Hall%2C%20Sarbari%20More!5e0!3m2!1sen!2sin!4v1700000000000"
               sx={{
                 width: '100%',
                 height: 400,
-                border: 'none',
                 borderRadius: '0 0 12px 12px',
+                overflow: 'hidden',
               }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+            >
+              <iframe
+                title="Reception location map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.5!2d88.25!3d22.45!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sShiv%20Shakti%20Marriage%20Hall%2C%20Sarbari%20More!5e0!3m2!1sen!2sin!4v1700000000000"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  border: 'none',
+                  display: 'block',
+                }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </Box>
           </DialogContent>
 
           <DialogActions
