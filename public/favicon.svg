@@ -1,0 +1,7 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark maroon background -->
+  <rect width="512" height="512" fill="#3A1E25"/>
+  
+  <!-- Gold letter "A" - luxury serif style -->
+  <text x="256" y="380" font-family="'Playfair Display', 'Georgia', serif" font-size="280" font-weight="700" text-anchor="middle" fill="#D4AF37" letter-spacing="0">A</text>
+</svg>
