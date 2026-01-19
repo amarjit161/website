@@ -1,0 +1,209 @@
+/* Premium Wedding Hero Typography */
+
+/* ========================================
+   @FONT-FACE: Transcity Font Setup
+   ======================================== */
+
+@font-face {
+  font-family: 'Transcity';
+  src: url('/fonts/Transcity.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* Shows fallback while loading */
+}
+
+@font-face {
+  font-family: 'Transcity';
+  src: url('/fonts/Transcity-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Transcity';
+  src: url('/fonts/Transcity-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Transcity';
+  src: url('/fonts/Transcity-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ========================================
+   COUPLE'S NAME: Premium Styling
+   ======================================== */
+
+.couple-name-hero {
+  /* Font Stack */
+  font-family: 'Transcity', 'Playfair Display', 'Fraunces', serif;
+
+  /* Responsive Sizing with clamp() */
+  /* Desktop: 4.2rem | Tablet: 3.2rem | Mobile: 2.2rem */
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  line-height: 1.1;
+
+  /* Weight & Style */
+  font-weight: 800;
+  font-style: normal;
+
+  /* Color: Premium Cream/Ivory */
+  color: #FFF6EE;
+
+  /* Letter Spacing: Elegant Spacing */
+  letter-spacing: 0.08em;
+
+  /* Text Shadow: Depth & Elegance */
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    0 8px 16px rgba(201, 162, 77, 0.25),
+    0 0 20px rgba(201, 162, 77, 0.1);
+
+  /* Position & Z-Index */
+  position: relative;
+  z-index: 1;
+
+  /* Typography Settings */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Smooth Transitions */
+  transition: all 0.3s ease;
+
+  /* Remove any default margins */
+  margin: 0;
+  padding: 0;
+
+  /* Word Spacing for better readability */
+  word-spacing: 0.1em;
+}
+
+/* Desktop Hover Effect (if 3D enabled) */
+html.threeD-enabled .couple-name-hero:hover {
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    0 12px 24px rgba(201, 162, 77, 0.35),
+    0 0 30px rgba(201, 162, 77, 0.2);
+  letter-spacing: 0.12em;
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   COUPLE'S SUBTITLE: Elegant Secondary Text
+   ======================================== */
+
+.couple-subtitle {
+  /* Font Stack */
+  font-family: 'Transcity', 'Playfair Display', 'Fraunces', serif;
+
+  /* Responsive Sizing */
+  /* Desktop: 1.4rem | Tablet: 1.1rem | Mobile: 0.95rem */
+  font-size: clamp(0.95rem, 2.5vw, 1.4rem);
+  line-height: 1.6;
+
+  /* Weight & Style */
+  font-weight: 400;
+  font-style: italic;
+
+  /* Color: Gold Accent */
+  color: #C9A24D;
+
+  /* Letter Spacing */
+  letter-spacing: 0.05em;
+
+  /* Position & Z-Index */
+  position: relative;
+  z-index: 1;
+
+  /* Typography Settings */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Opacity for elegance */
+  opacity: 0.95;
+
+  /* Transition */
+  transition: all 0.3s ease;
+
+  /* Margins */
+  margin: 0;
+  padding: 0;
+}
+
+/* Desktop Hover Effect */
+html.threeD-enabled .couple-subtitle:hover {
+  opacity: 1;
+  letter-spacing: 0.08em;
+  color: #E8C56B;
+}
+
+/* ========================================
+   RESPONSIVE: Tablet & Mobile Adjustments
+   ======================================== */
+
+@media (max-width: 768px) {
+  .couple-name-hero {
+    /* Slightly softer shadow on tablets */
+    text-shadow: 
+      0 2px 4px rgba(0, 0, 0, 0.2),
+      0 6px 12px rgba(201, 162, 77, 0.2),
+      0 0 15px rgba(201, 162, 77, 0.08);
+    letter-spacing: 0.06em;
+  }
+
+  .couple-subtitle {
+    letter-spacing: 0.04em;
+  }
+}
+
+@media (max-width: 480px) {
+  .couple-name-hero {
+    /* Minimal shadow on mobile for performance */
+    text-shadow: 
+      0 2px 4px rgba(0, 0, 0, 0.2),
+      0 4px 8px rgba(201, 162, 77, 0.15);
+    letter-spacing: 0.05em;
+    word-spacing: 0.05em;
+  }
+
+  .couple-subtitle {
+    letter-spacing: 0.03em;
+    opacity: 0.9;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY: Reduced Motion Support
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .couple-name-hero,
+  .couple-subtitle {
+    transition: none;
+  }
+
+  .couple-name-hero:hover {
+    transform: none;
+    letter-spacing: 0.08em;
+  }
+
+  .couple-subtitle:hover {
+    letter-spacing: 0.05em;
+  }
+}
+
+/* ========================================
+   FALLBACK: When Transcity Not Loaded
+   ======================================== */
+
+.couple-name-hero,
+.couple-subtitle {
+  /* Graceful degradation to serif stack */
+  font-family: 'Transcity', 'Playfair Display', 'Fraunces', 'Georgia', serif;
+}

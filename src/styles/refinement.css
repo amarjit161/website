@@ -1,0 +1,403 @@
+/* ============================================
+   WEDDING SITE POLISH & REFINEMENT
+   Subtle animations, gentle color accents, elegant interactions
+   ============================================ */
+
+:root {
+  --accent-gold: #C9A24D;
+  --accent-dark: #3A1E25;
+  --text-primary: #5A4A4A;
+  --transition-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ============================================
+   HERO SECTION - Bride/Groom Name Card
+   ============================================ */
+
+/* Subtle floating animation for hero */
+.hero-card,
+[data-hero-card] {
+  position: relative;
+}
+
+html.threeD-enabled .hero-card,
+html.threeD-enabled [data-hero-card] {
+  animation: gentleFloat 4s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0) rotateX(0deg) rotateY(0deg);
+    filter: drop-shadow(0 8px 16px rgba(201, 162, 77, 0.12));
+  }
+  50% {
+    transform: translateY(-4px) rotateX(1deg) rotateY(1deg);
+    filter: drop-shadow(0 12px 24px rgba(201, 162, 77, 0.18));
+  }
+}
+
+/* Hover effect for hero on desktop */
+html.threeD-enabled .hero-card:hover,
+html.threeD-enabled [data-hero-card]:hover {
+  animation-play-state: paused;
+  transform: translateY(-4px) rotateX(1deg) rotateY(-1deg);
+}
+
+/* Flat fallback */
+html:not(.threeD-enabled) .hero-card,
+html:not(.threeD-enabled) [data-hero-card] {
+  box-shadow: 0 8px 16px rgba(201, 162, 77, 0.12);
+}
+
+/* ============================================
+   INVITE VIDEO FRAME - 3D Depth & Soft Glow
+   ============================================ */
+
+.video-frame,
+[data-video-frame] {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+html.threeD-enabled .video-frame,
+html.threeD-enabled [data-video-frame] {
+  transition: all 0.4s var(--transition-smooth);
+  transform-style: preserve-3d;
+}
+
+html.threeD-enabled .video-frame:hover,
+html.threeD-enabled [data-video-frame]:hover {
+  transform: translateZ(8px) rotateX(1deg) rotateY(-1deg);
+  box-shadow: 0 16px 40px rgba(201, 162, 77, 0.25),
+              0 0 30px rgba(201, 162, 77, 0.15);
+}
+
+/* Flat fallback */
+html:not(.threeD-enabled) .video-frame,
+html:not(.threeD-enabled) [data-video-frame] {
+  box-shadow: 0 8px 24px rgba(201, 162, 77, 0.18);
+  transition: all 0.3s ease;
+}
+
+html:not(.threeD-enabled) .video-frame:hover,
+html:not(.threeD-enabled) [data-video-frame]:hover {
+  box-shadow: 0 12px 32px rgba(201, 162, 77, 0.25);
+}
+
+/* ============================================
+   COUNTDOWN CARDS - Subtle 3D Elevation
+   ============================================ */
+
+.countdown-box,
+[data-countdown-box] {
+  position: relative;
+  transition: all 0.3s var(--transition-smooth);
+}
+
+html.threeD-enabled .countdown-box,
+html.threeD-enabled [data-countdown-box] {
+  transform-style: preserve-3d;
+}
+
+html.threeD-enabled .countdown-box:hover,
+html.threeD-enabled [data-countdown-box]:hover {
+  transform: translateY(-3px) translateZ(4px);
+  box-shadow: 0 12px 28px rgba(201, 162, 77, 0.2);
+}
+
+/* Flat fallback */
+html:not(.threeD-enabled) .countdown-box,
+html:not(.threeD-enabled) [data-countdown-box] {
+  box-shadow: 0 4px 12px rgba(201, 162, 77, 0.12);
+}
+
+html:not(.threeD-enabled) .countdown-box:hover,
+html:not(.threeD-enabled) [data-countdown-box]:hover {
+  box-shadow: 0 8px 20px rgba(201, 162, 77, 0.18);
+}
+
+/* ============================================
+   BUTTONS - Press Effect & Elevation
+   ============================================ */
+
+.button-elevated,
+[data-button-elevated] {
+  transition: all 0.2s ease;
+}
+
+html.threeD-enabled .button-elevated,
+html.threeD-enabled [data-button-elevated] {
+  transform-style: preserve-3d;
+}
+
+html.threeD-enabled .button-elevated:hover,
+html.threeD-enabled [data-button-elevated]:hover {
+  transform: translateY(-2px) translateZ(3px);
+  box-shadow: 0 8px 20px rgba(201, 162, 77, 0.3);
+}
+
+html.threeD-enabled .button-elevated:active,
+html.threeD-enabled [data-button-elevated]:active {
+  transform: translateY(0) translateZ(1px);
+  box-shadow: 0 4px 12px rgba(201, 162, 77, 0.2);
+}
+
+/* Flat fallback */
+html:not(.threeD-enabled) .button-elevated,
+html:not(.threeD-enabled) [data-button-elevated] {
+  box-shadow: 0 4px 12px rgba(201, 162, 77, 0.15);
+}
+
+html:not(.threeD-enabled) .button-elevated:hover,
+html:not(.threeD-enabled) [data-button-elevated]:hover {
+  box-shadow: 0 6px 16px rgba(201, 162, 77, 0.25);
+}
+
+/* ============================================
+   SCROLL ANIMATIONS - Fade In & Gentle Lift
+   ============================================ */
+
+/* Fade in from bottom on scroll */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s var(--transition-smooth) forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger effect for multiple elements */
+.fade-in-up:nth-child(1) { animation-delay: 0.1s; }
+.fade-in-up:nth-child(2) { animation-delay: 0.2s; }
+.fade-in-up:nth-child(3) { animation-delay: 0.3s; }
+.fade-in-up:nth-child(4) { animation-delay: 0.4s; }
+
+/* ============================================
+   SECTION DIVIDERS - Color Refinement
+   ============================================ */
+
+.section-divider,
+[data-section-divider] {
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--accent-gold) 20%,
+    var(--accent-gold) 80%,
+    transparent 100%);
+  opacity: 0.6;
+  margin: 2rem 0;
+  transition: opacity 0.3s ease;
+}
+
+.section-divider:hover,
+[data-section-divider]:hover {
+  opacity: 0.9;
+}
+
+/* ============================================
+   ACCENT HIGHLIGHTS - Refined Gold
+   ============================================ */
+
+.accent-highlight,
+[data-accent] {
+  color: var(--accent-gold);
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.accent-highlight:hover,
+[data-accent]:hover {
+  text-shadow: 0 0 8px rgba(201, 162, 77, 0.4);
+}
+
+/* ============================================
+   SECTION HEADINGS - Gentle Underline
+   ============================================ */
+
+.section-heading,
+[data-section-heading] {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.section-heading::after,
+[data-section-heading]::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-gold), transparent);
+  transition: width 0.4s var(--transition-smooth);
+}
+
+.section-heading:hover::after,
+[data-section-heading]:hover::after {
+  width: 100%;
+}
+
+/* ============================================
+   CARD ELEVATION - Subtle Lift
+   ============================================ */
+
+.card-elevated,
+[data-card-elevated] {
+  transition: all 0.3s var(--transition-smooth);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.card-elevated:hover,
+[data-card-elevated]:hover {
+  box-shadow: 0 8px 24px rgba(201, 162, 77, 0.15);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   TIMELINE ITEMS - Subtle Enhancement
+   ============================================ */
+
+.timeline-item,
+[data-timeline-item] {
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover,
+[data-timeline-item]:hover {
+  transform: translateX(4px);
+}
+
+/* ============================================
+   LIKE BUTTON - Soft Heart Animation (Optional)
+   ============================================ */
+
+.like-button-heart,
+[data-like-heart] {
+  transition: all 0.2s ease;
+  transform-origin: center;
+}
+
+.like-button-heart.active,
+[data-like-heart].active {
+  animation: softHeartPop 0.4s ease-out;
+}
+
+@keyframes softHeartPop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ============================================
+   FOOTER POLISH - Soft Background Accent
+   ============================================ */
+
+.footer-section,
+[data-footer] {
+  position: relative;
+  background: linear-gradient(180deg,
+    rgba(201, 162, 77, 0.03) 0%,
+    rgba(201, 162, 77, 0.06) 50%,
+    rgba(201, 162, 77, 0.03) 100%);
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATION
+   ============================================ */
+
+.fade-in-up,
+.hero-card,
+.video-frame,
+.countdown-box,
+.button-elevated,
+.card-elevated,
+.timeline-item {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* ============================================
+   REDUCED MOTION - Accessibility
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-up,
+  .section-heading::after,
+  .card-elevated:hover,
+  .timeline-item:hover,
+  .like-button-heart.active {
+    animation: none;
+    transition: none;
+    transform: none;
+  }
+  
+  html.threeD-enabled .hero-card,
+  html.threeD-enabled .video-frame:hover,
+  html.threeD-enabled .countdown-box:hover,
+  html.threeD-enabled .button-elevated:hover {
+    transform: none;
+  }
+}
+
+/* ============================================
+   MOBILE OPTIMIZATION
+   ============================================ */
+
+@media (max-width: 768px) {
+  /* Reduce animation complexity on mobile */
+  @keyframes gentleFloat {
+    0%, 100% {
+      transform: translateY(0);
+      filter: drop-shadow(0 4px 8px rgba(201, 162, 77, 0.1));
+    }
+    50% {
+      transform: translateY(-2px);
+      filter: drop-shadow(0 6px 12px rgba(201, 162, 77, 0.12));
+    }
+  }
+  
+  html.threeD-enabled .video-frame:hover,
+  html.threeD-enabled [data-video-frame]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(201, 162, 77, 0.15);
+  }
+  
+  html.threeD-enabled .countdown-box:hover,
+  html.threeD-enabled [data-countdown-box]:hover {
+    transform: translateY(-2px);
+  }
+  
+  html.threeD-enabled .button-elevated:hover,
+  html.threeD-enabled [data-button-elevated]:hover {
+    transform: translateY(-1px);
+  }
+}
+
+@media (max-width: 480px) {
+  /* Ultra-light effects on small phones */
+  html.threeD-enabled .hero-card,
+  html.threeD-enabled [data-hero-card] {
+    animation: none;
+    box-shadow: 0 4px 8px rgba(201, 162, 77, 0.1);
+  }
+  
+  html.threeD-enabled .video-frame:hover,
+  html.threeD-enabled [data-video-frame]:hover {
+    transform: none;
+    box-shadow: 0 6px 16px rgba(201, 162, 77, 0.12);
+  }
+}

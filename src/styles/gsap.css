@@ -1,0 +1,188 @@
+/* GSAP Scroll Animations - Mobile Optimized */
+
+/* ========================================
+   GSAP ANIMATION BASE STYLES
+   ======================================== */
+
+/* Ensure elements are visible by default for non-JS fallback */
+[data-gsap-fade-up],
+[data-gsap-fade-left],
+[data-gsap-fade-right],
+[data-gsap-scale],
+[data-gsap-item] {
+  /* Will be animated by GSAP ScrollTrigger */
+  will-change: opacity, transform;
+}
+
+/* ========================================
+   PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+
+/* GPU acceleration for smoother animations */
+[data-gsap-fade-up],
+[data-gsap-fade-left],
+[data-gsap-fade-right],
+[data-gsap-scale],
+[data-gsap-item] {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+}
+
+/* ========================================
+   MOBILE OPTIMIZATIONS
+   ======================================== */
+
+@media (max-width: 768px) {
+  /* Reduce animation complexity on tablets */
+  [data-gsap-fade-up],
+  [data-gsap-fade-left],
+  [data-gsap-fade-right],
+  [data-gsap-scale],
+  [data-gsap-item] {
+    /* Lighter transforms on mobile */
+    will-change: opacity;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Further optimize for mobile phones */
+  [data-gsap-fade-up],
+  [data-gsap-fade-left],
+  [data-gsap-fade-right],
+  [data-gsap-scale],
+  [data-gsap-item] {
+    /* Minimal will-change to reduce memory usage */
+    will-change: auto;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY: REDUCED MOTION SUPPORT
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  /* Disable all GSAP animations for users who prefer reduced motion */
+  [data-gsap-fade-up],
+  [data-gsap-fade-left],
+  [data-gsap-fade-right],
+  [data-gsap-scale],
+  [data-gsap-item],
+  [data-gsap-stagger] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* ========================================
+   FALLBACK: NO JAVASCRIPT
+   ======================================== */
+
+/* If JavaScript is disabled, show all content immediately */
+.no-js [data-gsap-fade-up],
+.no-js [data-gsap-fade-left],
+.no-js [data-gsap-fade-right],
+.no-js [data-gsap-scale],
+.no-js [data-gsap-item] {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* ========================================
+   GSAP LOADING STATE
+   ======================================== */
+
+/* Prevent flash of unstyled content before GSAP loads */
+.gsap-loading [data-gsap-fade-up],
+.gsap-loading [data-gsap-fade-left],
+.gsap-loading [data-gsap-fade-right],
+.gsap-loading [data-gsap-scale],
+.gsap-loading [data-gsap-item] {
+  opacity: 0;
+}
+
+/* After GSAP loads, remove loading class */
+.gsap-loaded [data-gsap-fade-up],
+.gsap-loaded [data-gsap-fade-left],
+.gsap-loaded [data-gsap-fade-right],
+.gsap-loaded [data-gsap-scale],
+.gsap-loaded [data-gsap-item] {
+  /* GSAP will handle visibility - animations controlled by JS */
+  visibility: visible;
+}
+
+/* ========================================
+   SMOOTH SCROLLING (PRESERVE EXISTING)
+   ======================================== */
+
+/* Ensure smooth scrolling remains intact */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Disable smooth scroll during GSAP animations for better performance */
+.gsap-animating {
+  scroll-behavior: auto;
+}
+
+/* ========================================
+   3D TRANSFORMS (WHEN 3D MODE ENABLED)
+   ======================================== */
+
+html.threeD-enabled [data-gsap-3d] {
+  transform-style: preserve-3d;
+  perspective: 1200px;
+}
+
+/* ========================================
+   STAGGER ANIMATION CONTAINERS
+   ======================================== */
+
+[data-gsap-stagger] {
+  /* Container for staggered children */
+  position: relative;
+}
+
+/* Items within stagger container */
+[data-gsap-stagger] [data-gsap-item] {
+  /* Will be animated by GSAP with stagger delay */
+  position: relative;
+}
+
+/* ========================================
+   PARALLAX ELEMENTS
+   ======================================== */
+
+[data-gsap-parallax] {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Reduce parallax on mobile for performance */
+@media (max-width: 768px) {
+  [data-gsap-parallax] {
+    transform: none !important;
+  }
+}
+
+/* ========================================
+   DEBUG MODE (UNCOMMENT TO VISUALIZE)
+   ======================================== */
+
+/* Uncomment to see animated elements */
+/*
+[data-gsap-fade-up],
+[data-gsap-fade-left],
+[data-gsap-fade-right],
+[data-gsap-scale],
+[data-gsap-item] {
+  outline: 2px dashed rgba(255, 0, 0, 0.3);
+}
+
+[data-gsap-stagger] {
+  outline: 2px solid rgba(0, 255, 0, 0.3);
+}
+*/

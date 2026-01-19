@@ -4,16 +4,37 @@
   box-sizing: border-box;
 }
 
-/* Custom Transeity Font */
+/* Transcity Font - Local @font-face Declarations */
 @font-face {
-  font-family: 'Transeity';
-  src: url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&display=swap') format('woff2');
+  font-family: 'Transcity';
+  src: url('/fonts/Transcity.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
-.couple-name {
-  font-family: 'Transeity', 'Playfair Display', serif !important;
+@font-face {
+  font-family: 'Transcity';
+  src: url('/fonts/Transcity-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Transcity';
+  src: url('/fonts/Transcity-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Transcity';
+  src: url('/fonts/Transcity-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
 }
 
 html,

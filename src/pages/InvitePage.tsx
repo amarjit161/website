@@ -30,6 +30,8 @@ import EventIcon from '@mui/icons-material/Event';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import CloseIcon from '@mui/icons-material/Close';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import EmbeddedPdfViewer from '../components/EmbeddedPdfViewer';
+import ScrollTransition from '../components/ScrollTransition';
 
 interface CountdownState {
   days: number;
@@ -56,9 +58,15 @@ const floatHero = keyframes`
 `;
 
 const pulseGlow = keyframes`
-  0% { box-shadow: 0 8px 24px rgba(201, 162, 77, 0.18); transform: translateY(0); }
-  50% { box-shadow: 0 12px 32px rgba(201, 162, 77, 0.32); transform: translateY(-2px); }
-  100% { box-shadow: 0 8px 24px rgba(201, 162, 77, 0.18); transform: translateY(0); }
+  0% { box-shadow: 0 8px 24px rgba(90, 160, 214, 0.22); transform: translateY(0); }
+  50% { box-shadow: 0 12px 32px rgba(90, 160, 214, 0.38); transform: translateY(-2px); }
+  100% { box-shadow: 0 8px 24px rgba(90, 160, 214, 0.22); transform: translateY(0); }
+`;
+
+const scrollGuideArrow = keyframes`
+  0% { transform: translateY(0); opacity: 0.7; }
+  50% { transform: translateY(8px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 0.7; }
 `;
 
 export default function InvitePage() {
@@ -100,17 +108,17 @@ export default function InvitePage() {
       {/* Ganesh Shloka Section */}
       <Box
         sx={{
-          bgcolor: '#3A1E25',
-          backgroundImage: 'radial-gradient(circle at 50% 0%, rgba(201, 162, 77, 0.1) 0%, transparent 50%)',
+          bgcolor: '#FFE4F0',
+          backgroundImage: 'radial-gradient(circle at 50% 0%, rgba(255, 150, 178, 0.15) 0%, transparent 50%)',
           py: 3,
           textAlign: 'center',
-          borderBottom: '2px solid #C9A24D',
+          borderBottom: '2px solid #FF96B2',
         }}
       >
         <Typography
           variant="h4"
           sx={{
-            color: '#C9A24D',
+            color: '#C19AC7',
             fontWeight: 700,
             fontSize: { xs: '1.8rem', sm: '2.2rem' },
             letterSpacing: '2px',
@@ -133,10 +141,11 @@ export default function InvitePage() {
             transition={{ type: 'spring', stiffness: 80, damping: 14 }}
           >
             <Box
+              data-hero-card="true"
               sx={{
-                bgcolor: '#2f1726',
+                bgcolor: '#FFE4F0',
                 backgroundImage:
-                  'linear-gradient(135deg, rgba(74, 26, 45, 0.95) 0%, rgba(56, 21, 48, 0.95) 45%, rgba(38, 14, 36, 0.96) 100%)',
+                  'linear-gradient(135deg, rgba(255, 228, 240, 0.95) 0%, rgba(255, 240, 247, 0.95) 45%, rgba(193, 154, 199, 0.1) 100%)',
                 borderRadius: 3,
                 p: { xs: 4, sm: 6 },
                 mb: 6,
@@ -147,7 +156,7 @@ export default function InvitePage() {
                 transformStyle: 'preserve-3d',
                 animation: `${floatHero} 14s ease-in-out infinite`,
                 willChange: 'transform',
-                boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 18px 60px rgba(32, 7, 25, 0.55)',
+                boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 18px 60px rgba(193, 154, 199, 0.2)',
                 '&::before': {
                   content: '""',
                   position: 'absolute',
@@ -155,33 +164,49 @@ export default function InvitePage() {
                   left: 0,
                   right: 0,
                   bottom: 0,
-                  backgroundImage: 'radial-gradient(circle at 50% 0%, rgba(201, 162, 77, 0.05) 0%, transparent 55%)',
+                  backgroundImage: 'radial-gradient(circle at 50% 0%, rgba(255, 150, 178, 0.08) 0%, transparent 55%)',
                   pointerEvents: 'none',
                 },
               }}
             >
-            <Typography
-              variant="h1"
+            <Box
               sx={{
-                fontSize: { xs: '2.5rem', sm: '3.5rem' },
-                mb: 2,
-                color: '#FFF6EE',
-                fontWeight: 800,
                 position: 'relative',
                 zIndex: 1,
-                textShadow: '0 8px 32px rgba(201, 162, 77, 0.2)',
-                fontFamily: "'Transeity', 'Playfair Display', serif",
+                mb: 2,
+                px: { xs: 3, sm: 4 },
+                py: { xs: 2, sm: 3 },
+                borderRadius: 2,
+                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 248, 245, 0.3) 100%)',
+                border: '1px solid rgba(193, 154, 199, 0.25)',
+                boxShadow: '0 8px 24px rgba(193, 154, 199, 0.12), inset 0 1px 2px rgba(255, 255, 255, 0.5)',
+                backdropFilter: 'blur(2px)',
+                userSelect: 'none',
+                WebkitUserSelect: 'none',
+                WebkitTouchCallout: 'none',
+                WebkitTapHighlightColor: 'transparent',
               }}
             >
-              {weddingConfig.groomName} & {weddingConfig.brideName}
-            </Typography>
+              <Typography
+                variant="h1"
+                className="couple-name-hero"
+                sx={{
+                  position: 'relative',
+                  zIndex: 1,
+                  color: '#4A1E28',
+                  textShadow: '0 2px 8px rgba(0, 0, 0, 0.12), 0 0 6px rgba(74, 30, 40, 0.1)',
+                  m: 0,
+                  p: 0,
+                  display: 'inline-block',
+                  pointerEvents: 'none',
+                }}
+              >
+                {weddingConfig.groomName} & {weddingConfig.brideName}
+              </Typography>
+            </Box>
             <Typography
-              variant="h5"
+              className="couple-subtitle"
               sx={{
-                fontSize: { xs: '1rem', sm: '1.3rem' },
-                color: '#C9A24D',
-                fontStyle: 'italic',
-                fontWeight: 400,
                 position: 'relative',
                 zIndex: 1,
               }}
@@ -196,10 +221,10 @@ export default function InvitePage() {
           <Paper
             elevation={0}
             sx={{
-              bgcolor: '#301828',
+              bgcolor: '#FFE4F0',
               backgroundImage:
-                'linear-gradient(145deg, rgba(78, 29, 50, 0.95) 0%, rgba(54, 22, 45, 0.95) 50%, rgba(36, 13, 36, 0.97) 100%)',
-              border: '2px solid #C9A24D',
+                'linear-gradient(145deg, rgba(255, 228, 240, 0.95) 0%, rgba(255, 240, 247, 0.95) 50%, rgba(193, 154, 199, 0.08) 100%)',
+              border: '2px solid #C19AC7',
               borderRadius: 4,
               p: 4,
               mb: 6,
@@ -207,10 +232,10 @@ export default function InvitePage() {
               position: 'relative',
               overflow: 'hidden',
               transformStyle: 'preserve-3d',
-              boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 18px 60px rgba(32, 7, 25, 0.5)',
+              boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 18px 60px rgba(193, 154, 199, 0.15)',
             }}
           >
-          <Typography variant="h4" sx={{ mb: 3, color: '#C9A24D', position: 'relative', zIndex: 1 }}>
+          <Typography variant="h4" sx={{ mb: 3, color: '#C19AC7', position: 'relative', zIndex: 1 }}>
             ⏳ Countdown to the Big Day
           </Typography>
           <Box
@@ -245,12 +270,13 @@ export default function InvitePage() {
                 }}>
 
                 <Box
+                  data-countdown-box="true"
                   sx={{
-                    bgcolor: 'rgba(255, 246, 238, 0.95)',
+                    bgcolor: 'rgba(255, 255, 255, 0.95)',
                     borderRadius: 2,
                     p: 2,
-                    boxShadow: '0 8px 24px rgba(201, 162, 77, 0.2)',
-                    border: '1px solid #C9A24D',
+                    boxShadow: '0 8px 24px rgba(90, 160, 214, 0.25)',
+                    border: '1px solid #5AA0D6',
                     position: 'relative',
                     zIndex: 1,
                     animation: `${pulseGlow} 6s ease-in-out infinite`,
@@ -261,14 +287,14 @@ export default function InvitePage() {
                   <Typography
                     variant="h3"
                     sx={{
-                      color: '#D4B5E8',
+                      color: '#C19AC7',
                       fontWeight: 700,
                       fontSize: { xs: '1.8rem', sm: '2.5rem' },
                     }}
                   >
                     {String(item.value).padStart(2, '0')}
                   </Typography>
-                  <Typography variant="body2" sx={{ color: '#C9A24D', mt: 1, fontWeight: 600 }}>
+                  <Typography variant="body2" sx={{ color: '#5AA0D6', mt: 1, fontWeight: 600 }}>
                     {item.label}
                   </Typography>
                 </Box>
@@ -354,13 +380,14 @@ export default function InvitePage() {
               👨‍👩‍👧‍👦 Family Details
             </Typography>
             <Box
+              data-gsap-stagger
               sx={{
                 display: 'grid',
                 gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
                 gap: 4,
               }}
             >
-              <Box sx={{ textAlign: 'center' }}>
+              <Box data-gsap-item sx={{ textAlign: 'center' }}>
                   <Typography
                     variant="h5"
                     sx={{
@@ -393,7 +420,7 @@ export default function InvitePage() {
                   </Typography>
               </Box>
 
-              <Box sx={{ textAlign: 'center' }}>
+              <Box data-gsap-item sx={{ textAlign: 'center' }}>
                   <Typography
                     variant="h5"
                     sx={{
@@ -441,26 +468,73 @@ export default function InvitePage() {
         >
           <Card sx={{ mb: 4 }}>
           <CardContent sx={{ p: { xs: 3, sm: 4 } }}>
-            <Typography
-              variant="h3"
-              sx={{
-                mb: 4,
-                color: 'primary.main',
-                textAlign: 'center',
-              }}
-            >
-              📅 Events Timeline
-            </Typography>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2, mb: 4 }}>
+              <Typography
+                variant="h3"
+                sx={{
+                  color: 'primary.main',
+                  textAlign: 'center',
+                }}
+              >
+                Events Timeline
+              </Typography>
+              <Box
+                sx={{
+                  animation: `${scrollGuideArrow} 2.4s ease-in-out infinite`,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  transition: 'filter 0.3s ease',
+                  '&:hover': {
+                    filter: 'drop-shadow(0 0 6px rgba(201, 162, 77, 0.4))',
+                  },
+                }}
+                role="presentation"
+              >
+                <svg
+                  width="28"
+                  height="28"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  style={{
+                    filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.06))',
+                  }}
+                >
+                  <path
+                    d="M12 4L5 11H19L12 4M12 20V7"
+                    stroke="url(#arrowGradient)"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    fill="none"
+                  />
+                  <defs>
+                    <linearGradient id="arrowGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stopColor="#7B9FAB" stopOpacity="0.75" />
+                      <stop offset="100%" stopColor="#C9A24D" stopOpacity="0.55" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </Box>
+            </Box>
 
             <Timeline position="alternate">
               {weddingConfig.events.map((event, index) => (
-                <TimelineItem key={index}>
+                <TimelineItem 
+                  key={index} 
+                  className={`timeline-item ${index === 0 ? 'timeline-active' : ''}`}
+                >
                   <TimelineSeparator>
                     <TimelineDot
+                      className="timeline-dot"
                       sx={{
-                        bgcolor: index % 2 === 0 ? 'primary.main' : 'secondary.main',
-                        width: 16,
-                        height: 16,
+                        bgcolor: index === 0 ? '#C9A24D' : '#8BA3BF',
+                        width: 20,
+                        height: 20,
+                        border: 'none',
+                        transition: 'all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
                       }}
                     />
                     {index < weddingConfig.events.length - 1 && <TimelineConnector />}
@@ -469,14 +543,22 @@ export default function InvitePage() {
                     <Typography
                       variant="h6"
                       sx={{
-                        color: 'text.primary',
-                        fontWeight: 600,
-                        mb: 0.5,
+                        color: '#1A2332',
+                        fontWeight: 700,
+                        mb: 1,
+                        fontSize: { xs: '1.1rem', sm: '1.25rem' },
                       }}
                     >
                       {event.title}
                     </Typography>
-                    <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                    <Typography 
+                      variant="body2" 
+                      sx={{ 
+                        color: '#5A7F8E', 
+                        fontWeight: 600,
+                        fontSize: { xs: '0.9rem', sm: '1rem' },
+                      }}
+                    >
                       {event.date}
                     </Typography>
                   </TimelineContent>
@@ -636,32 +718,13 @@ export default function InvitePage() {
                 fontWeight: 700,
               }}
             >
-              📄 Wedding Invitation
+              � Wedding Invitation
             </Typography>
 
-            <Box
-              sx={{
-                width: '100%',
-                height: { xs: '500px', sm: '700px', md: '800px' },
-                borderRadius: 2,
-                overflow: 'hidden',
-                boxShadow: '0 8px 24px rgba(201, 162, 77, 0.3)',
-                border: '2px solid #C9A24D',
-                bgcolor: '#fff',
-              }}
-            >
-              <iframe
-                src="https://drive.google.com/file/d/1Bloyc-3n6QkcWeblikBZTwcdSjaXtY9S/preview"
-                width="100%"
-                height="100%"
-                title="Wedding Invitation PDF"
-                allow="autoplay"
-                style={{
-                  border: 'none',
-                  display: 'block',
-                }}
-              />
-            </Box>
+            <EmbeddedPdfViewer
+              pdfUrl={weddingConfig.invitationPdfUrl}
+              title="View our wedding invitation"
+            />
             </CardContent>
           </Card>
         </motion.div>
@@ -768,6 +831,9 @@ export default function InvitePage() {
         </Dialog>
         </Container>
       </Box>
+
+      {/* Scroll Transition Bridge to Gallery */}
+      <ScrollTransition />
     </Box>
   );
 }

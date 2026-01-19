@@ -1,0 +1,662 @@
+/* Premium Cinematic Wedding Website Styles */
+
+/* ========================================
+   SMOOTH SCROLLING (Global)
+   ======================================== */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Account for navbar */
+}
+
+/* Disable smooth scroll during GSAP animations for performance */
+.gsap-animating {
+  scroll-behavior: auto;
+}
+
+/* ========================================
+   SECTION SPACING & FLOW
+   ======================================== */
+
+/* Natural breathing room between sections */
+section {
+  scroll-margin-top: 100px;
+}
+
+/* ========================================
+   PREMIUM DEPTH EFFECTS
+   ======================================== */
+
+/* Hero section - Floating effect */
+[data-hero-card] {
+  transform-style: preserve-3d;
+  perspective: 1200px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Countdown boxes - Layered depth */
+[data-countdown-box] {
+  transform-style: preserve-3d;
+  perspective: 800px;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+}
+
+[data-countdown-box]:hover {
+  transform: translateZ(20px) translateY(-4px);
+}
+
+/* Video frames - Embedded depth */
+[data-video-frame] {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  box-shadow: 
+    0 0 0 1px rgba(255, 150, 178, 0.3),
+    0 10px 30px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+}
+
+/* ========================================
+   PARALLAX EFFECTS (Subtle)
+   ======================================== */
+
+[data-parallax] {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* ========================================
+   CARD ELEVATIONS & SHADOWS
+   ======================================== */
+
+/* Premium card shadow system */
+.card-elevated {
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.06),
+    0 8px 24px rgba(193, 154, 199, 0.12),
+    0 16px 40px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card-elevated:hover {
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    0 12px 32px rgba(193, 154, 199, 0.18),
+    0 24px 56px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
+}
+
+/* ========================================
+   TIMELINE ENHANCEMENTS - LUXURY 3D DEPTH
+   ======================================== */
+
+/* Timeline container - Elegant ivory background with proper visibility */
+.timeline-section {
+  position: relative;
+  padding: 60px 0;
+  min-height: 400px;
+  background: linear-gradient(135deg, 
+    rgba(252, 250, 247, 0.95) 0%, 
+    rgba(245, 242, 238, 0.98) 50%,
+    rgba(252, 250, 247, 0.95) 100%);
+  border-radius: 16px;
+  margin: 24px 0;
+}
+
+/* Timeline connector - Clear visible line */
+.MuiTimeline-root .MuiTimelineConnector-root {
+  background: linear-gradient(180deg, 
+    rgba(123, 159, 171, 0.45) 0%, 
+    rgba(186, 177, 200, 0.4) 50%, 
+    rgba(123, 159, 171, 0.45) 100%);
+  position: relative;
+  width: 3px;
+  min-height: 50px;
+  box-shadow: 
+    inset 1px 0 2px rgba(255, 255, 255, 0.7),
+    inset -1px 0 2px rgba(90, 95, 123, 0.2),
+    0 0 4px rgba(123, 159, 171, 0.15);
+  opacity: 1;
+}
+
+/* Timeline dots - Clear and visible */
+.timeline-dot {
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  z-index: 2;
+  width: 20px !important;
+  height: 20px !important;
+  box-shadow: 
+    0 4px 16px rgba(90, 95, 123, 0.3),
+    0 -2px 4px rgba(255, 255, 255, 0.8) inset,
+    0 2px 4px rgba(123, 159, 171, 0.25) inset,
+    0 0 0 3px rgba(255, 255, 255, 0.8);
+  filter: drop-shadow(0 2px 4px rgba(90, 95, 123, 0.2));
+  border: none !important;
+}
+
+/* Timeline dot highlight - inner glow for depth */
+.timeline-dot::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4), transparent);
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.timeline-dot:hover {
+  box-shadow: 
+    0 8px 24px rgba(201, 162, 77, 0.4),
+    0 -2px 4px rgba(255, 255, 255, 0.8) inset,
+    0 2px 4px rgba(201, 162, 77, 0.25) inset,
+    0 0 0 4px rgba(255, 255, 255, 0.9),
+    0 0 0 14px rgba(201, 162, 77, 0.18);
+  transform: scale(1.35) translateY(-2px);
+  filter: drop-shadow(0 4px 8px rgba(201, 162, 77, 0.3));
+}
+
+/* Timeline item - Cards with subtle depth */
+.timeline-item {
+  opacity: 1;
+  animation: fadeInTimeline 0.6s ease-out forwards;
+}
+
+.timeline-item:nth-child(1) { animation-delay: 0.1s; }
+.timeline-item:nth-child(2) { animation-delay: 0.2s; }
+.timeline-item:nth-child(3) { animation-delay: 0.3s; }
+.timeline-item:nth-child(4) { animation-delay: 0.4s; }
+.timeline-item:nth-child(5) { animation-delay: 0.5s; }
+
+/* Timeline content cards - Floating depth illusion */
+.MuiTimeline-root .MuiTimelineContent-root {
+  padding: 0 16px;
+}
+
+.timeline-item .MuiTimelineContent-root {
+  position: relative;
+  background: linear-gradient(135deg, 
+    #FFFFFF 0%, 
+    rgba(252, 250, 247, 0.98) 100%);
+  border-radius: 16px;
+  padding: 20px 24px;
+  min-height: 80px;
+  box-shadow: 
+    0 8px 32px rgba(90, 95, 123, 0.15),
+    0 4px 12px rgba(123, 159, 171, 0.1),
+    inset 0 1px 3px rgba(255, 255, 255, 1),
+    inset 0 -1px 2px rgba(123, 159, 171, 0.08);
+  border: 1.5px solid rgba(201, 162, 77, 0.12);
+  backdrop-filter: blur(4px);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.timeline-item .MuiTimelineContent-root:hover {
+  box-shadow: 
+    /* Enhanced shadow on hover */
+    0 12px 32px rgba(90, 95, 123, 0.16),
+    0 6px 12px rgba(123, 159, 171, 0.12),
+    inset 0 1px 2px rgba(255, 255, 255, 0.95),
+    inset 0 -1px 2px rgba(123, 159, 171, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Active event highlight - enhanced prominence */
+.timeline-item.timeline-active {
+  z-index: 3;
+}
+
+.timeline-item.timeline-active .MuiTimelineContent-root {
+  background: linear-gradient(135deg, 
+    #FFFFFF 0%, 
+    rgba(249, 246, 240, 1) 100%);
+  box-shadow:
+    0 12px 40px rgba(201, 162, 77, 0.25),
+    0 6px 20px rgba(90, 95, 123, 0.15),
+    inset 0 1px 3px rgba(255, 255, 255, 1),
+    inset 0 -1px 2px rgba(201, 162, 77, 0.12);
+  border: 2px solid rgba(201, 162, 77, 0.3);
+  transform: scale(1.02);
+}
+
+.timeline-item.timeline-active .timeline-dot {
+  box-shadow: 
+    0 8px 28px rgba(201, 162, 77, 0.5),
+    0 -2px 4px rgba(255, 255, 255, 0.9) inset,
+    0 2px 4px rgba(201, 162, 77, 0.3) inset,
+    0 0 0 4px rgba(255, 255, 255, 0.9),
+    0 0 0 8px rgba(201, 162, 77, 0.2);
+  background: linear-gradient(135deg, #D4AF37 0%, #C9A24D 100%) !important;
+  color: #fff;
+  transform: scale(1.15);
+}
+}
+
+/* Depth animation keyframe */
+@keyframes fadeInTimeline {
+  from {
+    opacity: 0;
+    transform: translateY(20px) translateZ(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+  }
+}
+
+/* Alternating left-right on desktop */
+@media (min-width: 960px) {
+  .timeline-item:nth-child(odd) {
+    flex-direction: row;
+  }
+
+  .timeline-item:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+
+  /* Stagger the depth effect for alternating items */
+  .timeline-item:nth-child(odd) .MuiTimelineContent-root {
+    margin-left: 8px;
+  }
+
+  .timeline-item:nth-child(even) .MuiTimelineContent-root {
+    margin-right: 8px;
+  }
+}
+
+/* Stacked on mobile - Optimized shadows */
+@media (max-width: 768px) {
+  .timeline-item {
+    flex-direction: column !important;
+  }
+
+  .timeline-item .MuiTimelineContent-root {
+    padding: 18px 20px;
+    min-height: 70px;
+    box-shadow: 
+      0 6px 20px rgba(90, 95, 123, 0.12),
+      0 3px 8px rgba(123, 159, 171, 0.08),
+      inset 0 1px 2px rgba(255, 255, 255, 0.9),
+      inset 0 -1px 2px rgba(123, 159, 171, 0.06);
+  }
+
+  .timeline-dot {
+    box-shadow: 
+      0 2px 6px rgba(0, 0, 0, 0.08),
+      0 -1px 2px rgba(255, 255, 255, 0.3) inset,
+      0 1px 2px rgba(0, 0, 0, 0.06) inset;
+  }
+
+  .MuiTimeline-root .MuiTimelineConnector-root {
+    box-shadow: 
+      inset 0.5px 0 1px rgba(255, 255, 255, 0.2),
+      inset -0.5px 0 1px rgba(0, 0, 0, 0.08);
+  }
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .timeline-dot,
+  .timeline-item .MuiTimelineContent-root {
+    transition: none;
+  }
+
+  .timeline-item {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* ========================================
+   GALLERY & MEDIA
+   ======================================== */
+
+/* Gallery cards - Image animations */
+.gallery-card {
+  overflow: hidden;
+  border-radius: 12px;
+  position: relative;
+}
+
+.gallery-card img {
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform;
+}
+
+.gallery-card:hover img {
+  transform: scale(1.05) rotate(0.5deg);
+}
+
+/* Like button animation */
+.like-button {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  z-index: 10;
+}
+
+.like-button:active {
+  transform: scale(0.95);
+}
+
+/* ========================================
+   VIDEO SECTIONS
+   ======================================== */
+
+/* Video embed container */
+.video-embed-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 
+    0 0 0 1px rgba(255, 150, 178, 0.2),
+    0 10px 40px rgba(0, 0, 0, 0.1);
+}
+}
+
+.video-embed-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 12px;
+}
+
+/* Video autoplay preview (muted) */
+.video-preview {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+}
+
+.video-preview video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.video-preview:hover {
+  box-shadow: 
+    0 0 0 1px rgba(255, 150, 178, 0.3),
+    0 12px 48px rgba(255, 150, 178, 0.25);
+}
+
+/* ========================================
+   FOOTER SECTION
+   ======================================== */
+
+footer {
+  background: linear-gradient(135deg, rgba(15, 20, 25, 0.95) 0%, rgba(26, 31, 46, 0.98) 100%);
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  color: #F5F1E8;
+  position: relative;
+  z-index: 1;
+}
+
+/* Footer content padding */
+footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+}
+
+/* Copyright text */
+.footer-copyright {
+  font-size: 0.875rem;
+  color: rgba(107, 76, 107, 0.7);
+  transition: color 0.3s ease;
+}
+
+.footer-copyright:hover {
+  color: #FF96B2;
+}
+
+/* Warm closing message */
+.footer-message {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #FF96B2;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Footer divider */
+.footer-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #FF96B2, transparent);
+  margin: 16px auto;
+}
+
+/* Social links (if added) */
+.footer-links {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  color: #FF96B2;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.footer-link:hover {
+  color: #E8C56B;
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   MOBILE OPTIMIZATIONS
+   ======================================== */
+
+/* Reduce parallax on mobile */
+@media (max-width: 768px) {
+  [data-parallax] {
+    transform: none !important;
+  }
+
+  /* Reduce shadow complexity */
+  .card-elevated,
+  .card-elevated:hover {
+    box-shadow: 
+      0 2px 8px rgba(0, 0, 0, 0.1),
+      0 4px 16px rgba(201, 162, 77, 0.15);
+  }
+
+  /* Simpler hover effects */
+  [data-countdown-box]:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* Ultra-mobile optimization */
+@media (max-width: 480px) {
+  html {
+    scroll-padding-top: 60px;
+  }
+
+  /* Minimal depth on small screens */
+  [data-video-frame] {
+    box-shadow: 
+      0 4px 12px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  /* Reduce animation complexity */
+  .gallery-card img:hover {
+    transform: scale(1.02) rotate(0deg);
+  }
+
+  /* Footer responsive */
+  .footer-message {
+    font-size: 1rem;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY: REDUCED MOTION
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-countdown-box]:hover {
+    transform: none;
+  }
+
+  .card-elevated:hover {
+    transform: none;
+  }
+
+  .gallery-card img:hover {
+    transform: none;
+  }
+
+  .video-preview:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* ========================================
+   PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+
+/* GPU acceleration */
+[data-hero-card],
+[data-countdown-box],
+[data-video-frame],
+.gallery-card,
+.card-elevated {
+  will-change: transform, box-shadow;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Contain layout recalculations */
+.timeline-section,
+.gallery-section,
+.video-section {
+  contain: layout style paint;
+}
+
+/* ========================================
+   PRINT STYLES (For saving as PDF)
+   ======================================== */
+
+@media print {
+  html {
+    scroll-behavior: auto;
+  }
+
+/* ========================================
+   FOOTER - MINIMAL ELEGANT SIGNATURE
+   ======================================== */
+
+footer {
+  background: linear-gradient(135deg, rgba(47, 27, 43, 0.9) 0%, rgba(38, 14, 36, 0.95) 100%);
+  border-top: 2px solid rgba(201, 162, 77, 0.3);
+  position: relative;
+  overflow: visible;
+  width: 100%;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+/* Footer content should never be hidden */
+footer > div {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Ensure all text is visible */
+footer p,
+footer span,
+footer a,
+footer h6 {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: inherit;
+  color: inherit;
+}
+
+/* GitHub link styling - Subtle and elegant */
+footer a[href*="github"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 150, 178, 0.7);
+  text-decoration: none;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 4px 8px;
+  border-radius: 3px;
+}
+
+footer a[href*="github"]:hover {
+  color: rgba(255, 150, 178, 1);
+  text-decoration: underline;
+}
+
+footer a[href*="github"]:focus-visible {
+  outline: 1px solid rgba(255, 150, 178, 0.8);
+  outline-offset: 2px;
+}
+
+/* GitHub icon styling */
+footer a[href*="github"] svg {
+  width: 16px;
+  height: 16px;
+  opacity: 1 !important;
+  transition: transform 0.3s ease;
+}
+
+footer a[href*="github"]:hover svg {
+  transform: scale(1.2) rotate(5deg);
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+  footer {
+    background: white;
+    border: none;
+    color: black;
+  }
+
+  footer a[href*="github"] {
+    display: none;
+  }
+}

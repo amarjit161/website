@@ -1,0 +1,268 @@
+/* 3D Animation Styles - Enable/Disable via .threeD-enabled class on root */
+/* Subtle, elegant 3D effects for wedding website */
+
+/* ============================================
+   PERSPECTIVE & 3D CONTAINER SETUP
+   ============================================ */
+
+:root {
+  /* Subtle 3D perspective for elegant effect */
+  --perspective-depth: 1500px;    /* Gentle perspective */
+  --tilt-angle: 2.5deg;           /* Subtle tilt angle */
+  --lift-distance: 4px;           /* Gentle lift */
+  --rotation-speed: 0.5s;         /* Smooth animation */
+  
+  /* Color refinement */
+  --accent-gold: #C9A24D;
+  --accent-dark: #3A1E25;
+}
+
+/* Apply 3D perspective to entire page when enabled */
+html.threeD-enabled {
+  perspective: var(--perspective-depth);
+}
+
+/* ============================================
+   3D CARD EFFECTS
+   ============================================ */
+
+html.threeD-enabled .card-3d,
+html.threeD-enabled .threeD-card {
+  transition: transform var(--rotation-speed) cubic-bezier(0.23, 1, 0.320, 1),
+              box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+html.threeD-enabled .card-3d:hover,
+html.threeD-enabled .threeD-card:hover {
+  transform: translateZ(var(--lift-distance))
+             rotateX(var(--tilt-angle))
+             rotateY(calc(var(--tilt-angle) * -1));
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2),
+              0 0 20px rgba(201, 162, 77, 0.2);
+}
+
+/* ============================================
+   3D PAPER/BOX EFFECTS
+   ============================================ */
+
+html.threeD-enabled .paper-3d,
+html.threeD-enabled .threeD-paper {
+  transition: all var(--rotation-speed) cubic-bezier(0.23, 1, 0.320, 1);
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+html.threeD-enabled .paper-3d:hover,
+html.threeD-enabled .threeD-paper:hover {
+  transform: translateY(-var(--lift-distance))
+             rotateX(2deg)
+             rotateY(-1deg);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================
+   3D BUTTON EFFECTS
+   ============================================ */
+
+html.threeD-enabled .button-3d,
+html.threeD-enabled .threeD-button {
+  transition: all 0.2s ease;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+html.threeD-enabled .button-3d:hover,
+html.threeD-enabled .threeD-button:hover {
+  transform: translateY(-3px) translateZ(4px);
+  box-shadow: 0 8px 16px rgba(201, 162, 77, 0.25);
+}
+
+html.threeD-enabled .button-3d:active,
+html.threeD-enabled .threeD-button:active {
+  transform: translateY(-1px) translateZ(2px);
+}
+
+/* ============================================
+   3D IMAGE EFFECTS
+   ============================================ */
+
+html.threeD-enabled .image-3d,
+html.threeD-enabled .threeD-image {
+  transition: transform var(--rotation-speed) cubic-bezier(0.23, 1, 0.320, 1),
+              filter 0.3s ease;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+html.threeD-enabled .image-3d:hover,
+html.threeD-enabled .threeD-image:hover {
+  transform: translateZ(var(--lift-distance))
+             rotateX(calc(var(--tilt-angle) * 0.7))
+             rotateY(calc(var(--tilt-angle) * 0.7));
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.2));
+}
+
+/* ============================================
+   3D TEXT/TYPOGRAPHY EFFECTS
+   ============================================ */
+
+html.threeD-enabled .text-3d,
+html.threeD-enabled .threeD-text {
+  transition: transform 0.4s ease;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+html.threeD-enabled .text-3d:hover,
+html.threeD-enabled .threeD-text:hover {
+  transform: translateZ(3px) scaleY(1.02);
+}
+
+/* ============================================
+   3D DEPTH LAYERS
+   ============================================ */
+
+html.threeD-enabled .depth-layer-1 {
+  transform-style: preserve-3d;
+  transition: transform var(--rotation-speed) ease;
+}
+
+html.threeD-enabled .depth-layer-1:hover {
+  transform: translateZ(4px);
+}
+
+html.threeD-enabled .depth-layer-2 {
+  transform-style: preserve-3d;
+  transition: transform var(--rotation-speed) ease;
+  transform: translateZ(-4px);
+}
+
+html.threeD-enabled .depth-layer-2:hover {
+  transform: translateZ(-2px);
+}
+
+html.threeD-enabled .depth-layer-3 {
+  transform-style: preserve-3d;
+  transition: transform var(--rotation-speed) ease;
+  transform: translateZ(-8px);
+}
+
+html.threeD-enabled .depth-layer-3:hover {
+  transform: translateZ(-4px);
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================ */
+
+/* Use GPU acceleration */
+html.threeD-enabled .card-3d,
+html.threeD-enabled .threeD-card,
+html.threeD-enabled .paper-3d,
+html.threeD-enabled .threeD-paper,
+html.threeD-enabled .button-3d,
+html.threeD-enabled .threeD-button,
+html.threeD-enabled .image-3d,
+html.threeD-enabled .threeD-image,
+html.threeD-enabled .text-3d,
+html.threeD-enabled .threeD-text {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  html.threeD-enabled {
+    perspective: none;
+  }
+
+  html.threeD-enabled .card-3d:hover,
+  html.threeD-enabled .threeD-card:hover,
+  html.threeD-enabled .paper-3d:hover,
+  html.threeD-enabled .threeD-paper:hover,
+  html.threeD-enabled .button-3d:hover,
+  html.threeD-enabled .threeD-button:hover,
+  html.threeD-enabled .image-3d:hover,
+  html.threeD-enabled .threeD-image:hover,
+  html.threeD-enabled .text-3d:hover,
+  html.threeD-enabled .threeD-text:hover {
+    transform: none;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  :root {
+    --tilt-angle: 3deg;
+    --lift-distance: 4px;
+  }
+
+  html.threeD-enabled .card-3d:hover,
+  html.threeD-enabled .threeD-card:hover {
+    transform: translateZ(var(--lift-distance))
+               rotateX(calc(var(--tilt-angle) * 0.5))
+               rotateY(calc(var(--tilt-angle) * -0.5));
+  }
+
+  html.threeD-enabled .image-3d:hover,
+  html.threeD-enabled .threeD-image:hover {
+    transform: translateZ(var(--lift-distance))
+               rotateX(calc(var(--tilt-angle) * 0.3))
+               rotateY(calc(var(--tilt-angle) * 0.3));
+  }
+}
+
+/* Ultra-low power devices */
+@media (max-width: 480px) {
+  html.threeD-enabled .card-3d,
+  html.threeD-enabled .threeD-card,
+  html.threeD-enabled .paper-3d,
+  html.threeD-enabled .threeD-paper {
+    transition: box-shadow 0.3s ease;
+  }
+
+  html.threeD-enabled .card-3d:hover,
+  html.threeD-enabled .threeD-card:hover,
+  html.threeD-enabled .paper-3d:hover,
+  html.threeD-enabled .threeD-paper:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  }
+}
+
+/* ============================================
+   FLAT (2D) FALLBACK - When disabled
+   ============================================ */
+
+html:not(.threeD-enabled) .card-3d,
+html:not(.threeD-enabled) .threeD-card,
+html:not(.threeD-enabled) .paper-3d,
+html:not(.threeD-enabled) .threeD-paper,
+html:not(.threeD-enabled) .button-3d,
+html:not(.threeD-enabled) .threeD-button,
+html:not(.threeD-enabled) .image-3d,
+html:not(.threeD-enabled) .threeD-image,
+html:not(.threeD-enabled) .text-3d,
+html:not(.threeD-enabled) .threeD-text,
+html:not(.threeD-enabled) .depth-layer-1,
+html:not(.threeD-enabled) .depth-layer-2,
+html:not(.threeD-enabled) .depth-layer-3 {
+  transform: none !important;
+  transition: box-shadow 0.2s ease, background-color 0.2s ease;
+  perspective: none;
+  transform-style: flat;
+}
+
+html:not(.threeD-enabled) .card-3d:hover,
+html:not(.threeD-enabled) .threeD-card:hover,
+html:not(.threeD-enabled) .paper-3d:hover,
+html:not(.threeD-enabled) .threeD-paper:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+html:not(.threeD-enabled) .button-3d:hover,
+html:not(.threeD-enabled) .threeD-button:hover {
+  box-shadow: 0 4px 8px rgba(201, 162, 77, 0.15);
+}

@@ -1,4 +1,5 @@
-import { Box, Tabs, Tab, Container } from '@mui/material';
+import { Box, Tabs, Tab, Container, Stack } from '@mui/material';
+import ThreeDToggle from './ThreeDToggle';
 
 interface NavbarProps {
   currentPage: 'invite' | 'gallery';
@@ -21,20 +22,29 @@ export default function Navbar({ currentPage, onNavigate }: NavbarProps) {
       }}
     >
       <Container maxWidth="lg">
-        <Tabs
-          value={currentPage}
-          onChange={handleChange}
-          sx={{
-            '& .MuiTab-root': {
-              fontSize: '1.1rem',
-              fontWeight: 600,
-            },
-          }}
-          centered
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+          sx={{ py: 1, px: 1 }}
         >
-          <Tab label="Invite" value="invite" />
-          <Tab label="Gallery" value="gallery" />
-        </Tabs>
+          <Tabs
+            value={currentPage}
+            onChange={handleChange}
+            sx={{
+              flex: 1,
+              '& .MuiTab-root': {
+                fontSize: '1.1rem',
+                fontWeight: 600,
+              },
+            }}
+            centered
+          >
+            <Tab label="Invite" value="invite" />
+            <Tab label="Gallery" value="gallery" />
+          </Tabs>
+          <ThreeDToggle />
+        </Stack>
       </Container>
     </Box>
   );

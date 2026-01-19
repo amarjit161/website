@@ -21,59 +21,36 @@ export default function GalleryPage() {
   const sectionViewport = { once: true, amount: 0.25 };
 
   return (
-    <Box sx={{ minHeight: '100vh' }}>
-      {/* Ganesh Shloka Section */}
+    <Box sx={{ minHeight: 'auto' }}>
+      {/* Gallery Content with Light Soft Pink */}
       <Box
         sx={{
-          bgcolor: '#3A1E25',
-          backgroundImage: 'radial-gradient(circle at 50% 0%, rgba(201, 162, 77, 0.1) 0%, transparent 50%)',
-          py: 3,
-          textAlign: 'center',
-          borderBottom: '2px solid #C9A24D',
-        }}
-      >
-        <Typography
-          variant="h4"
-          sx={{
-            color: '#C9A24D',
-            fontWeight: 700,
-            fontSize: { xs: '1.8rem', sm: '2.2rem' },
-            letterSpacing: '2px',
-          }}
-        >
-          ॐ गं गणपतये नमः
-        </Typography>
-      </Box>
-
-      {/* Gallery Content with Midnight Purple */}
-      <Box
-        sx={{
-          bgcolor: '#2A2344',
-          backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(201, 162, 77, 0.08) 0%, transparent 60%)',
-          minHeight: 'calc(100vh - 80px)',
+          bgcolor: '#FFE4F0',
+          backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(255, 150, 178, 0.08) 0%, transparent 60%)',
           py: 6,
         }}
       >
         <Container maxWidth="lg">
           {/* Header */}
-          <Box sx={{ textAlign: 'center', mb: 6 }}>
+          <Box sx={{ textAlign: 'center', mb: 6 }} data-gsap-fade-up>
             <Typography
               variant="h1"
               sx={{
                 fontSize: { xs: '2.5rem', sm: '3.5rem' },
                 mb: 2,
-                color: '#FFF6EE',
+                color: '#4A1E28',
                 fontWeight: 800,
-                textShadow: '0 8px 32px rgba(201, 162, 77, 0.2)',
+                textShadow: '0 2px 8px rgba(0, 0, 0, 0.12), 0 0 6px rgba(74, 30, 40, 0.1)',
               }}
             >
               Wedding Memories
             </Typography>
             <Typography
               variant="h5"
+              data-gsap-fade-up
               sx={{
                 fontSize: { xs: '1rem', sm: '1.3rem' },
-                color: '#C9A24D',
+                color: '#C19AC7',
                 fontStyle: 'italic',
                 fontWeight: 400,
               }}
@@ -94,9 +71,10 @@ export default function GalleryPage() {
             <Card
               sx={{
                 mb: 6,
-                bgcolor: 'rgba(255, 246, 238, 0.98)',
+                bgcolor: 'rgba(255, 255, 255, 0.7)',
                 borderRadius: 3,
-                boxShadow: '0 16px 48px rgba(201, 162, 77, 0.2)',
+                boxShadow: '0 8px 24px rgba(193, 154, 199, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.5)',
+                border: '1px solid rgba(255, 228, 240, 0.4)',
               }}
             >
               <CardContent sx={{ p: { xs: 3, sm: 4 }, textAlign: 'center' }}>
@@ -124,6 +102,7 @@ export default function GalleryPage() {
               </Typography>
 
               <Box
+                data-video-frame="true"
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
@@ -132,8 +111,8 @@ export default function GalleryPage() {
                   mx: 'auto',
                   p: 3,
                   borderRadius: 3,
-                  background: 'linear-gradient(135deg, #D4AF37 0%, #C9A24D 50%, #2F1B2B 100%)',
-                  boxShadow: '0 12px 40px rgba(201, 162, 77, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+                  background: 'linear-gradient(135deg, rgba(193, 154, 199, 0.2) 0%, rgba(212, 165, 165, 0.15) 50%, rgba(255, 240, 247, 0.3) 100%)',
+                  boxShadow: '0 8px 24px rgba(193, 154, 199, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.5)',
                 }}
               >
                 <Box
@@ -175,9 +154,10 @@ export default function GalleryPage() {
             <Card
               sx={{
                 mb: 6,
-                bgcolor: 'rgba(255, 246, 238, 0.98)',
+                bgcolor: 'rgba(255, 255, 255, 0.7)',
                 borderRadius: 3,
-                boxShadow: '0 16px 48px rgba(201, 162, 77, 0.2)',
+                boxShadow: '0 8px 24px rgba(193, 154, 199, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.5)',
+                border: '1px solid rgba(255, 228, 240, 0.4)',
               }}
             >
               <CardContent sx={{ p: { xs: 3, sm: 4 }, textAlign: 'center' }}>
@@ -189,7 +169,7 @@ export default function GalleryPage() {
                   fontWeight: 700,
                 }}
               >
-                🎬 Wedding Invite Video 2
+                🎬 Our Wedding Invitation
               </Typography>
 
               <Typography
@@ -201,10 +181,11 @@ export default function GalleryPage() {
                   lineHeight: 1.8,
                 }}
               >
-                Another beautiful moment from our wedding celebration!
+                Experience the elegance and emotion of our special day
               </Typography>
 
               <Box
+                data-video-frame="true"
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
@@ -213,8 +194,8 @@ export default function GalleryPage() {
                   mx: 'auto',
                   p: 3,
                   borderRadius: 3,
-                  background: 'linear-gradient(135deg, #D4AF37 0%, #C9A24D 50%, #2F1B2B 100%)',
-                  boxShadow: '0 12px 40px rgba(201, 162, 77, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+                  background: 'linear-gradient(135deg, rgba(193, 154, 199, 0.2) 0%, rgba(212, 165, 165, 0.15) 50%, rgba(255, 240, 247, 0.3) 100%)',
+                  boxShadow: '0 8px 24px rgba(193, 154, 199, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.5)',
                 }}
               >
                 <Box
@@ -228,15 +209,16 @@ export default function GalleryPage() {
                   }}
                 >
                   <iframe
-                    src="https://player.cloudinary.com/embed/?cloud_name=djfslppsg&public_id=VID-20260118-WA0021_fpak8q&autoplay=true&muted=true&loop=true&hideShowLogo=true&controls=true&preload=auto"
+                    src="https://player.cloudinary.com/embed/?cloud_name=djfslppsg&public_id=Amarjit_Anju_Wedding_Invitation_nx3uaa&hideShowLogo=true&controls=true"
                     width="100%"
                     height="100%"
-                    title="Wedding Invite Video 2"
-                    allow="autoplay; muted"
+                    title="Our Wedding Invitation"
+                    allow="fullscreen"
                     style={{
                       border: 'none',
                       display: 'block',
                     }}
+                    loading="lazy"
                   />
                 </Box>
               </Box>
@@ -246,11 +228,13 @@ export default function GalleryPage() {
 
           {/* Gallery Card */}
           <Card
+            data-gsap-fade-up
             sx={{
               mb: 6,
-              bgcolor: 'rgba(255, 246, 238, 0.98)',
+              bgcolor: 'rgba(255, 255, 255, 0.7)',
               borderRadius: 3,
-              boxShadow: '0 16px 48px rgba(201, 162, 77, 0.2)',
+              boxShadow: '0 8px 24px rgba(193, 154, 199, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.5)',
+              border: '1px solid rgba(255, 228, 240, 0.4)',
             }}
           >
           <CardContent sx={{ p: { xs: 3, sm: 4 }, textAlign: 'center' }}>
@@ -274,7 +258,7 @@ export default function GalleryPage() {
                 lineHeight: 1.8,
               }}
             >
-              View and enjoy our wedding photos! New photos are added regularly as we celebrate with our loved ones. The album updates automatically when new memories are shared.
+              A collection of moments from our special day.
             </Typography>
 
             <Button
@@ -301,7 +285,7 @@ export default function GalleryPage() {
               }}
             >
               <Typography variant="body2" sx={{ color: 'text.secondary', fontStyle: 'italic' }}>
-                This will open in Google Photos. The album updates automatically when new photos are added. Only the album owner can upload new memories.
+                Click the button above to view our wedding memories.
               </Typography>
             </Paper>
           </CardContent>
@@ -309,7 +293,7 @@ export default function GalleryPage() {
 
         {/* Footer Note */}
         <Box sx={{ textAlign: 'center', py: 4 }}>
-          <Typography variant="body1" sx={{ color: '#C9A24D', fontSize: '1.1rem' }}>
+          <Typography variant="body1" sx={{ color: '#C19AC7', fontSize: '1.1rem' }}>
             ✨ New photos coming soon! Check back regularly for updates ✨
           </Typography>
         </Box>
@@ -327,7 +311,7 @@ export default function GalleryPage() {
             <Typography
               sx={{
                 textAlign: 'center',
-                color: '#C9A24D',
+                color: '#C19AC7',
                 fontSize: { xs: '1rem', sm: '1.2rem' },
                 fontStyle: 'italic',
                 fontWeight: 500,

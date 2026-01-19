@@ -54,8 +54,9 @@ export const weddingConfig = {
     },
   ],
   
-  // Wedding Invitation PDF
-  invitationPdfUrl: "https://drive.google.com/file/d/1Bloyc-3n6QkcWeblikBZTwcdSjaXtY9S/view",
+  // Wedding Invitation PDF - Self-hosted or CDN URL
+  // Replace this URL later without changing any layout or UI text
+  invitationPdfUrl: "https://drive.google.com/file/d/1yk9nn-BEXPvXYG5S8MEcYaFGlGJBaIPC/view",
   
   // Wedding Invitation Video
   invitationVideoUrl: "https://drive.google.com/file/d/YOUR_VIDEO_ID/preview",

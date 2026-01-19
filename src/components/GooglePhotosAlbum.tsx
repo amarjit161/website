@@ -29,7 +29,7 @@ export default function GooglePhotosAlbum({ albumUrl, embedUrl }: GooglePhotosAl
       <div className="album-link-container">
         <h2 className="album-title">Wedding Photo Gallery</h2>
         <p className="album-description">
-          View and enjoy our wedding photos! New photos are added regularly.
+          A collection of moments from our special day.
         </p>
         <a
           href={albumUrl}
@@ -41,7 +41,7 @@ export default function GooglePhotosAlbum({ albumUrl, embedUrl }: GooglePhotosAl
           Open Photo Album
         </a>
         <p className="album-note">
-          This will open in Google Photos. The album updates automatically when new photos are added.
+          Click to view our wedding memories.
         </p>
       </div>
     </div>
